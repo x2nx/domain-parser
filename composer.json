@@ -1,0 +1,25 @@
+{
+    "name": "qycorp/domain-parser",
+    "description": "Returns complete whois and domain info parser domain information",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/qycorp/domain-parser",
+    "autoload": {
+        "psr-4": {
+            "Qycorp\\DomainParser\\": "src/"
+        },
+        "files": [
+          "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "OK Xaas",
+            "email": "okxaas@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0"
+    }
+}
