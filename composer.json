@@ -1,12 +1,12 @@
 {
-    "name": "qycorp/domain-parser",
+    "name": "x2nx/domain-parser",
     "description": "Returns complete whois and domain info parser domain information",
     "type": "library",
     "license": "MIT",
-    "homepage": "https://github.com/qycorp/domain-parser",
+    "homepage": "https://github.com/x2nx/domain-parser",
     "autoload": {
         "psr-4": {
-            "Qycorp\\DomainParser\\": "src/"
+            "X2nx\\DomainParser\\": "src/"
         },
         "files": [
           "src/helpers.php"

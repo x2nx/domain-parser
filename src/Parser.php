@@ -1,6 +1,6 @@
 <?php
 
-namespace Qycorp\DomainParser;
+namespace X2nx\DomainParser;
 
 use Exception;
 

@@ -4,15 +4,15 @@ Returns complete whois and domain info parser domain information
 
 Install using composer:
 ```bash
-composer require qycorp/domain-parser
+composer require x2nx/domain-parser
 ```
 
-Qycorp Domains parser uses a public suffix PHP dataset auto-generated from the [publicsuffix.org](https://publicsuffix.org/). The dataset get periodically updates from us, but you can also manually update it by cloning this library and running the import script with the import command:
+X2nx Domains parser uses a public suffix PHP dataset auto-generated from the [publicsuffix.org](https://publicsuffix.org/). The dataset get periodically updates from us, but you can also manually update it by cloning this library and running the import script with the import command:
 
 ```bash
 php ./data/import.php
 ```
-> If you want to parse ordinary web urls then use `$host = parse_url($return, PHP_URL_HOST); $domain = new \Qycorp\DomainParser\Parser($host);` to get the domain object. 
+> If you want to parse ordinary web urls then use `$host = parse_url($return, PHP_URL_HOST); $domain = new \X2nx\DomainParser\Parser($host);` to get the domain object. 
 
 
 ## Library API
