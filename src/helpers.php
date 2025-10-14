@@ -85,13 +85,58 @@ if (!function_exists('iana_domain')) {
         $domain_info = new \X2nx\DomainParser\Parser($domain);
 
         return [
-            'domain'        => $domain_info->get(),
-            'sub_domain'    => $domain_info->getSub(),
-            'domain_name'   => $domain_info->getName(),
-            'full_domain'   => $domain_info->getRegisterable(),
-            'top_level_tld' => $domain_info->getSuffix(),
-            'whois_server'  => $domain_info->getWhoisServer(),
-            'whois_info'    => $domain_info->getWhoisInfo(),
+            'domain'            => $domain_info->get(),
+            'sub_domain'        => $domain_info->getSub(),
+            'domain_name'       => $domain_info->getName(),
+            'full_domain'       => $domain_info->getRegisterable(),
+            'top_level_tld'     => $domain_info->getSuffix(),
+            'whois_server'      => $domain_info->getWhoisServer(),
+            'whois_info'        => $domain_info->getWhoisInfo(),
+            'whois_formatted'   => $domain_info->getWhoisFormatted(),
+            'whois_parsed'      => $domain_info->getWhoisParsed(),
+            'rdap_server'       => $domain_info->getRdapServer(),
+            'rdap_info'         => $domain_info->getRdapInfo(),
+            'rdap_formatted'    => $domain_info->getRdapFormatted(),
+            'rdap_summary'      => $domain_info->getRdapSummary(),
+            'rdap_parsed'       => $domain_info->getRdapParsed(),
         ];
+    }
+}
+
+if (!function_exists('iana_domain_info')) {
+    /**
+     * Returns whois or rdap info
+     * @param $domain 域名地址
+     * @return array|false
+     */
+    function iana_domain_info($domain = '', $format = 'text') {
+        if (empty($domain)) {
+            return false;
+        }
+        $domain_info = new \X2nx\DomainParser\Parser($domain);
+
+        $info = '';
+
+        if ($format === 'text') {
+            if (!empty($domain_info->getRdapFormatted())) {
+                $info = $domain_info->getRdapFormatted();
+            }
+            if (!empty($domain_info->getWhoisFormatted())) {
+                $info = $domain_info->getWhoisFormatted();
+            }
+        }
+        if ($format === 'array' || $format === 'json') {
+            if (!empty($domain_info->getWhoisParsed())) {
+                $info = $domain_info->getWhoisParsed();
+            }
+            if (!empty($domain_info->getRdapParsed())) {
+                $info = $domain_info->getRdapParsed();
+            }
+            if ($format === 'json') {
+                $info = json_encode($info, JSON_UNESCAPED_UNICODE);
+            }
+        }
+
+        return $info;
     }
 }

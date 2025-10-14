@@ -25,6 +25,12 @@ php ./data/import.php
 * **getSub()** - Returns the full sub domain path for you domain. For example, blog.example.com will return 'blog', and subdomain.demo.cn will return 'subdomain.demo'.
 * **getWhoisServer()** - Returns whois server url info.
 * **getWhoisInfo()** - Returns whois info.
+* **getWhoisFormatted()** - Returns formatted whois information.
+* **getWhoisParsed()** - Returns whois structured data.
+* **getRdapServer()** - Returns rdap server url info.
+* **getRdapInfo()** - Returns rdap info.
+* **getRdapFormatted()** - Returns formatted rdap information.
+* **getRdapParsed()** - Returns rdap structured data.
 * **isKnown()** - Returns true if public suffix is know and false otherwise.
 * **isICANN()** - Returns true if the public suffix is found in the ICANN DOMAINS section of the public suffix list.
 * **isPrivate()** - Returns true if the public suffix is found in the PRIVATE DOMAINS section of the public suffix list.
@@ -34,6 +40,7 @@ php ./data/import.php
 
 * **iana_whois($domain,$is_server)** Return the original whois information of the domain name
 * **iana_domain($domain)** Return the components of the domain name, including subdomain, name, top-level domain, original whois information, etc
+* **iana_domain_info($domain, $format)** Returns the unified structure information of the domain name. The first parameter is the domain name, and the second parameter is the return format. The return format supports text|array|json
 
 ## Copyright and license
 
