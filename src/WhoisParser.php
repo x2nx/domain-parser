@@ -41,6 +41,7 @@ class WhoisParser
             'dates' => [
                 'created' => '',
                 'updated' => '',
+                'database'=> '',
                 'expires' => ''
             ],
             'dnssec' => '',
@@ -138,9 +139,14 @@ class WhoisParser
                         $data['dates']['created'] = $value;
                     }
                 }
-                elseif (self::matchesKey($keyLower, ['updated date', 'last updated', 'changed', 'modified', 'last modified'])) {
+                elseif (self::matchesKey($keyLower, ['updated date', 'changed', 'modified', 'last modified'])) {
                     if (empty($data['dates']['updated'])) {
                         $data['dates']['updated'] = $value;
+                    }
+                }
+                elseif (self::matchesKey($keyLower, ['last updated', 'changed', 'modified', 'last modified'])) {
+                    if (empty($data['dates']['database'])) {
+                        $data['dates']['database'] = $value;
                     }
                 }
                 elseif (self::matchesKey($keyLower, ['expiry date', 'expiration date', 'expires', 'paid-till', 'registry expiry date', 'expiration time'])) {
@@ -467,9 +473,11 @@ class WhoisParser
             if (!empty($data['dates']['expires'])) {
                 $output[] = "Expiry Date: " . $data['dates']['expires'];
             }
+            if (!empty($data['dates']['database'])) {
+                $output[] = "Database Updated Date: " . $data['dates']['database'];
+            }
         }
         
         return implode("\n", $output);
     }
 }
-

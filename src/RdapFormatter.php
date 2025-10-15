@@ -152,8 +152,10 @@ class RdapFormatter
                         $output[] = "Created Date: " . $eventDate;
                         break;
                     case 'last changed':
-                    case 'last update of RDAP database':
                         $output[] = "Updated Date: " . $eventDate;
+                        break;
+                    case 'last update of RDAP database':
+                        $output[] = "Database Updated Date: " . $eventDate;
                         break;
                     case 'expiration':
                         $output[] = "Expiry Date: " . $eventDate;
@@ -387,6 +389,7 @@ class RdapFormatter
             'dates' => [
                 'created' => '',
                 'updated' => '',
+                'database'=> '',
                 'expires' => ''
             ],
             'dnssec' => '',
@@ -431,8 +434,10 @@ class RdapFormatter
                         $result['dates']['created'] = $date;
                         break;
                     case 'last changed':
-                    case 'last update of RDAP database':
                         $result['dates']['updated'] = $date;
+                        break;
+                    case 'last update of RDAP database':
+                        $result['dates']['database'] = $date;
                         break;
                     case 'expiration':
                         $result['dates']['expires'] = $date;
@@ -582,4 +587,3 @@ class RdapFormatter
         return $summary;
     }
 }
-
