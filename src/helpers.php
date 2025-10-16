@@ -82,7 +82,7 @@ if (!function_exists('iana_domain')) {
         if (empty($domain)) {
             return false;
         }
-        $domain_info = new \X2nx\DomainParser\Parser($domain);
+        $domain_info = new \X2nx\DomainParser\Core\DomainParser($domain);
 
         return [
             'domain'            => $domain_info->get(),

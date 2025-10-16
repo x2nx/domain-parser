@@ -2,6 +2,11 @@
 
 namespace X2nx\DomainParser;
 
+use X2nx\DomainParser\Parsers\WhoisParser;
+use X2nx\DomainParser\Parsers\RdapParser;
+use X2nx\DomainParser\Formatters\WhoisFormatter;
+use X2nx\DomainParser\Formatters\RdapFormatter;
+
 /**
  * 域名解析器
  * 
@@ -281,7 +286,7 @@ class Parser
         }
 
         $parsed = WhoisParser::parse($whoisInfo);
-        return WhoisParser::formatParsed($parsed);
+        return WhoisFormatter::format($parsed);
     }
 
     /**
@@ -369,7 +374,7 @@ class Parser
             return [];
         }
 
-        return RdapFormatter::getSummary($rdapInfo);
+        return RdapParser::getSummary($rdapInfo);
     }
 
     /**
@@ -385,7 +390,7 @@ class Parser
             return [];
         }
 
-        return RdapFormatter::parse($rdapInfo);
+        return RdapParser::parse($rdapInfo);
     }
 
     /**
