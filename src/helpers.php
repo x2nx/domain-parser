@@ -82,7 +82,7 @@ if (!function_exists('iana_domain')) {
         if (empty($domain)) {
             return false;
         }
-        $domain_info = new \X2nx\DomainParser\Core\DomainParser($domain);
+        $domain_info = new \X2nx\DomainParser\Parser($domain);
 
         return [
             'domain'            => $domain_info->get(),
@@ -117,19 +117,15 @@ if (!function_exists('iana_domain_info')) {
 
         $info = [];
 
-        if (!empty($domain_info->getWhoisParsed())) {
+        if (!empty($domain_info->getWhoisServer())) {
             $info = $domain_info->getWhoisParsed();
-        }
-        if (!empty($domain_info->getRdapParsed())) {
-            $info = $domain_info->getRdapParsed();
-        }
-        if (!empty($domain_info->getRdapFormatted())) {
-            $info['parsed_text'] = $domain_info->getRdapFormatted();
-        }
-        if (!empty($domain_info->getWhoisFormatted())) {
             $info['parsed_text'] = $domain_info->getWhoisFormatted();
         }
-        
+        if (!empty($domain_info->getRdapServer())) {
+            $info = $domain_info->getRdapParsed();
+            $info['parsed_text'] = $domain_info->getRdapFormatted();
+        }
+
         return $info;
     }
 }

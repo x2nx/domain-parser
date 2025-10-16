@@ -181,6 +181,11 @@ function processSuffixList(array $lines): array
         
         // 获取服务器信息
         $rdapServer = $rdapServers[$line] ?? '';
+        
+        if (empty($rdapServer)) {
+            $rdapServer = $rdapServers[idn_to_ascii($line)] ?? '';
+        }
+
         $whoisServer = '';
         
         // 只有在没有 RDAP 数据时才查询 WHOIS
